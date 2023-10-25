@@ -11,7 +11,6 @@ USER_STATUS = (
 
 
 class User(AbstractUser):
-    is_user = models.BooleanField(default=False)
     is_carer = models.BooleanField(default=False)
 
     email = models.EmailField(unique=True)
