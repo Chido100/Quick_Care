@@ -12,6 +12,85 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 fixed-top">
+        
+            <a class="navbar-brand" href="{% url 'dashboard' %}">QuickCare</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    
+
+                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Visitor Acess
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#">Create Ticket</a></li>
+                                    <li><a class="dropdown-item" href="#">View Tickets</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Community Mail
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#">Inbox</a></li>
+                                    <li><a class="dropdown-item" href="#">New Conversation</a></li>
+                                </ul>
+                                
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Maintenance Request
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#">Create Request</a></li>
+                                    <li><a class="dropdown-item" href="#">View Requests</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Repository</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Browse</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1"
+                            aria-disabled="true">{{request.user.username}}</a>
+                    </li>
+
+                </ul>
+                <!-- <form class="d-flex ms-2">
+                    <input class="form-control me-2" type="search" placeholder="Search Tickets" aria-label>
+                    <button class="btn btn-outline-warning me-3" type="submit">Search</button>
+                </form> -->
+
+                
+
+                <a href="{% url 'profile' %}" class="btn btn-dark me-2">Profile</a>
+                <a href="{% url 'logout' %}" class="btn btn-primary me-2">Logout</a>
+
+            </div>
+
+        
+    </nav>
+
+
     {% if messages %}
     {% for message in messages %}
         <div class="alert alert-{{message.tags}} mx-auto" style="width: 40rem;" role="alert">

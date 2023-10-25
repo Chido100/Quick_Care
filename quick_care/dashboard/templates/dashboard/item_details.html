@@ -23,9 +23,9 @@
                 {% endif %}
 
                 {% if user == item.creator %}
-                    <form action="{% url 'delete' item.pk %}" method="POST">
+                    <form action="{% url 'delete-item' item.pk %}" method="POST">
                         {% csrf_token %}
-                        <a href="{% url 'edit' item.pk %}" class="btn btn-warning">Edit</a>
+                        <a href="{% url 'edit-item' item.pk %}" class="btn btn-warning">Edit</a>
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 {% endif %}

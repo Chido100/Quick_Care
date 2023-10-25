@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView, View
+from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from .models import Item, Category
@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 
 
 # Dashboard view
-class DashboardView(LoginRequiredMixin, View):
+class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'dashboard/dashboard.html'
 
     def get_context_data(self, **kwargs):
