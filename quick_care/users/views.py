@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.urls import reverse_lazy
 from .models import User
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
 from django.contrib.auth import get_user_model
 from django.core.mail import EmailMessage
@@ -65,3 +65,39 @@ class CreateUserView(CreateView):
            user.save()
            activate_email(self.request, user, form.cleaned_data.get('email'))
         return super().form_valid(form)
+
+
+
+# User profile
+class ProfileView(LoginRequiredMixin, View):
+    template_name = 'users/profile.html'
+    user_form_class = UserUpdateForm
+    profile_form_class = ProfileUpdateForm
+
+    def get(self, request, *args, **kwargs):
+        u_form = self.user_form_class(instance=request.user)
+        if hasattr(request.user, 'profile'):
+            p_form = self.profile_form_class(instance=request.user.profile)
+        else:
+            p_form = self.profile_form_class()
+        return render(request, self.template_name, {'u_form': u_form, 'p_form': p_form})
+
+    def post(self, request, *args, **kwargs):
+        u_form = self.user_form_class(request.POST, instance=request.user)
+        if hasattr(request.user, 'profile'):
+            p_form = self.profile_form_class(request.POST, request.FILES, instance=request.user.profile)
+        else:
+            p_form = self.profile_form_class(request.POST, request.FILES)
+
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            if not hasattr(request.user, 'profile'):
+                profile = p_form.save(commit=False)
+                profile.user = request.user
+                profile.save()
+            else:
+                p_form.save()
+            messages.info(request, 'Your account has been updated!')
+            return redirect('profile')
+
+        return render(request, self.template_name, {'u_form': u_form, 'p_form': p_form})
