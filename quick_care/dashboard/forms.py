@@ -1,0 +1,15 @@
+from django import forms
+from .models import Item
+
+
+class NewItemFrom(forms.ModelForm):
+    class Meta:
+        model = Item
+        fields = ['category', 'name', 'description', 'image']
+
+
+class EditItemForm(forms.ModelForm):
+    class Meta:
+        model = Item
+        fields = ['category', 'name', 'description', 'image']
+        
