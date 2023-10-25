@@ -27,11 +27,11 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        messages.sucess(request, "Thank you for confirming your email. You can now login to your account.")
-        return redirect('sign-in')
+        messages.success(request, "Thank you for confirming your email. You can now login to your account.")
+        return redirect('login')
     else:
         messages.error(request, "Activation link is invalid.")
-    return redirect('sign-in')
+    return redirect('login')
 
 
 def activate_email(request, user, to_email):
