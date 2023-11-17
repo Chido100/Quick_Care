@@ -2,6 +2,7 @@ from django.db import models
 from users.models import User, Profile
 
 
+
 GENDER = (
     ('male', 'Male'),
     ('female', 'Female'),

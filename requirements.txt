@@ -3,6 +3,7 @@ crispy-bootstrap5==0.7
 Django==4.2.6
 django-crispy-forms==2.1
 django-jazzmin==2.6.0
+django-multipageforms==0.6.0
 iniconfig==2.0.0
 packaging==23.2
 Pillow==10.1.0
