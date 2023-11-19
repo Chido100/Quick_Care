@@ -1,0 +1,12 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    <h3>Slot History</h3>
+    {% for slot in slots %}
+        <p>Date: {{ slot.slot_date }}</p>
+        <p>Postcode: {{ slot.postcode }}</p>
+        <p>Additional Care: {{ slot.additional_care }}</p>
+        <p>Age group: {{ slot.age_group }}</p>
+        <p>Number of Kids: {{ slot.number_of_kids }}</p>
+    {% endfor %}
+{% endblock content %}

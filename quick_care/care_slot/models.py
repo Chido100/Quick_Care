@@ -34,5 +34,7 @@ class CareSlot(models.Model):
         verbose_name_plural = 'CareSlots'
 
     def __str__(self):
-        return self.creator
+        return f'{self.creator}'
+    
+
     

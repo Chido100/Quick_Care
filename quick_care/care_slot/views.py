@@ -14,7 +14,7 @@ class CreateCareSlotView(LoginRequiredMixin, CreateView):
     model = CareSlot
     form_class = CareSlotForm
     template_name = 'care_slot/create_slot.html'
-    success_url = reverse_lazy('all-slots')
+    success_url = reverse_lazy('slot-list')
 
     def form_valid(self, form):
         slot_date_str = form.cleaned_data['slot_date']
@@ -29,3 +29,14 @@ class CreateCareSlotView(LoginRequiredMixin, CreateView):
         else:
             messages.error(self.request, 'The date selected is less than 2 days. Please select a valid date.')
             return self.form_invalid(form)
+
+
+# List all Slots
+class ListCareSlotView(LoginRequiredMixin, ListView):
+    model = CareSlot
+    template_name = 'care_slot/slot_list.html'
+    context_object_name = 'slots'
+
+    def get_queryset(self):
+        return CareSlot.objects.filter(creator=self.request.user)
+
