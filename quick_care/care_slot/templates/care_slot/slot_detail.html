@@ -1,0 +1,18 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<h1>Slot Detail</h1>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ slot.creator }}</h5>
+            <p class="card-text">Number of kids: {{ slot.number_of_kids }}</p>      
+            <p class="card-text">Age Group: {{ slot.age_group }}</p>   
+            <p class="card-text">Additional Care: {{ slot.additional_care }}</p> 
+            <p class="card-text">Postcode: {{ slot.postcode }}</p>  
+            <p class="card-text">Slot Date: {{ slot.slot_date }}</p>  
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

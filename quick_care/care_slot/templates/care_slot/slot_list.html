@@ -2,11 +2,15 @@
 
 {% block content %}
     <h3>Slot History</h3>
-    {% for slot in slots %}
-        <p>Date: {{ slot.slot_date }}</p>
-        <p>Postcode: {{ slot.postcode }}</p>
-        <p>Additional Care: {{ slot.additional_care }}</p>
-        <p>Age group: {{ slot.age_group }}</p>
-        <p>Number of Kids: {{ slot.number_of_kids }}</p>
-    {% endfor %}
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                {% for slot in slots %}
+                    <p>Date: {{ slot.slot_date }}</p>
+                    <a href="{% url 'edit-slot' slot.id%}" >Edit</a>
+                    
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock content %}

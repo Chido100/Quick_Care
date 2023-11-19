@@ -6,17 +6,17 @@ from users.models import User
 AGE_GROUP = (
     ('select', 'Select'),
     ('newborn', 'Newborn'),
-    ('toddler', 'Toddler'),
+    ('Toddler', 'toddler'),
     ('pre-school', 'Pre-school'),
-    ('primary_school', 'Primary school'),
+    ('primary school', 'Primary school'),
     ('teenager(12+years)', 'Teenager(12+years)')
 )
 
 ADDITIONAL_CARE = (
     ('select', 'Select'),
     ('cooking', 'Cooking'),
-    ('putting_kids_to_bed', 'Putting kids to bed'),
-    ('homework_help', 'Homework help')
+    ('putting kids to bed', 'Putting kids to bed'),
+    ('homework help', 'Homework help')
 )
 
 
