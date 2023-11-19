@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'users',
     'carer',
     'dashboard',
+    'mail',
 
     'crispy_forms',
     'crispy_bootstrap5',

@@ -17,13 +17,9 @@ class CreateChildminderView(LoginRequiredMixin, CreateView):
         form.instance.childminder = self.request.user
         return super().form_valid(form)
 
-    def get_success_url(self):
-        return reverse_lazy('childminder-details', kwargs={childminder_id: self.object.id})
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('childminder-details', kwargs={'pk': self.object.id})
 
-    #def get_context_data(self, **kwargs):
-    #    context = super().get_context_data(**kwargs)
-    #    context['title'] = self.title
-    #    return context
 
 
 # Childminder Details
@@ -32,3 +28,7 @@ class ChildminderDetailsView(LoginRequiredMixin, DetailView):
     template_name = 'carer/childminder_details.html'
     context_object_name = 'childminder'
     pk_url_kwarg = 'pk'
+
+
+
+
